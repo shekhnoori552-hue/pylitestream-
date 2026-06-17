@@ -61,7 +61,7 @@ for frame in StreamVideo("/sdcard/dashcam_footage.mp4"):
     detect_objects(frame)
 
 
-🔬 Empirical Validation
+EMPIRICAL VALIDATION
 pylitestream is rigorously benchmarked on sandboxed ARM architecture. Telemetry was tracked using the resource.getrusage Linux module to definitively prove space complexity.
 
 v0.1.0 Core Check: Validated against a 1 Terabyte infinite byte stream (/dev/zero). Memory peaked and stabilized flat at 39.49 MB while initial ram baseline as 19.20 MB.
@@ -69,3 +69,18 @@ v0.1.0 Core Check: Validated against a 1 Terabyte infinite byte stream (/dev/zer
 Storage I/O (StreamCSV): Successfully executed two comprehensive benchmarks on local device storage, parsing synthetic datasets and enterprise CSVs with zero line-fragmentation errors. Memory peaked and stablised at 22.20 MB while initial ram baseline as 19.39 MB.
 
 Network I/O (StreamAPI): Validated via a continuous polling loop against the USGS Live Earthquake GeoJSON feed, maintaining a stable 0.25 MB memory footprint across connection cycles.Memory peaked and stablised at 22.29 MB while initial ram baseline as 19.92 MB.
+
+INSTALLATION
+pylitestream is officially published on the Python Package Index (PyPI) and is built to run flawlessly on both standard servers and constrained mobile environments (Termux / Pydroid 3).
+
+1. Standard Installation (Recommended)
+To install the stable release of the O(1) streaming engine, run:
+pip install pylitestream
+
+2. Optional: Headless Video Processing
+If you are deploying StreamVideo on a headless Linux server or an edge device without a GUI display server, install the headless dependencies to prevent OS crashes:
+pip install pylitestream opencv-python-headless
+
+3. Install Latest Development Build
+To pull the absolute latest, bleeding-edge commits directly from this source repository:
+pip install git+https://github.com/shekhsalman/pylitestream.git
