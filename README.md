@@ -83,4 +83,4 @@ pip install pylitestream opencv-python-headless
 
 3. Install Latest Development Build
 To pull the absolute latest, bleeding-edge commits directly from this source repository:
-pip install git+https://github.com/shekhsalman/pylitestream.git
+pip install git+https://github.com/shekhnooro552-hue/pylitestream.git
