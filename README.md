@@ -1,3 +1,7 @@
+python library - pylitestream==0.2.1
+![pylitestream Core Architecture](<pylitestream==0.2.1 core architecture.png>)
+
+
 pylitestream--0.2.1 (a python library) is an ultra-lightweight, memory-bounded streaming architecture engineered for Android and edge-computing environments.
 
 The Origin Story: Constraint-Driven Engineering
@@ -18,6 +22,7 @@ streamer = PyLiteStreamer("/path/to/massive_file.bin", chunk_size_mb=10)
 for index, packet in streamer.stream_packets():
     process(packet) # Peak RAM stays flat at ~15MB regardless of file size
 
+![v0.1.0 Architecture](<pylitestream==v0.1.0 architecture.jpg>)
 
 2. StreamCSV: The Tabular Processor
 
@@ -33,6 +38,8 @@ with open("/sdcard/large_medical_dataset.csv", "rb") as f:
     for row in StreamCSV(f, chunk_size=1024*1024):
         analyze_patient_data(row) 
 
+![StreamCSV Architecture](<pylitestream streamCSV architecture.jpg>)
+
 3. StreamAPI: The Network Processor
 
 BEST FOR: Emerging App developers, quantitative analysts, and IoT engineers who need to monitor infinite, high-frequency live data feeds (like stock tickers, live weather, or USGS earthquake JSONs) over weak mobile networks on Android/edge-computing environments.
@@ -47,6 +54,8 @@ live_url = "https://earthquake.usgs.gov/earthquakes/feed/live.geojson"
 for packet in StreamAPI(live_url, chunk_size=1024):
     print(packet.decode('utf-8', errors='ignore'))
 
+![StreamAPI Architecture](<pylitestream streamAPI architecture.jpg>)
+
 4. StreamVideo: The Multimedia Processor
 BEST FOR: Emerging Computer vision hobbyists running object detection or frame analysis on android/edge devices. 
 
@@ -59,6 +68,8 @@ from pylitestream import StreamVideo
 
 for frame in StreamVideo("/sdcard/dashcam_footage.mp4"):
     detect_objects(frame)
+
+![StreamVideo Architecture](<pylitestream streamVedio architecture.jpg>)
 
 INSTALLATION
 pylitestream is officially published on the Python Package Index (PyPI) and is built to run flawlessly on both standard servers and constrained mobile environments (Termux / Pydroid 3).
@@ -79,9 +90,17 @@ EMPIRICAL VALIDATION
 pylitestream is rigorously benchmarked on sandboxed ARM architecture. Telemetry was tracked using the resource.getrusage Linux module to definitively prove space complexity.
 
 v0.1.0 Core Check: Validated against a 1 Terabyte infinite byte stream (/dev/zero). Memory peaked and stabilized flat at 39.49 MB while initial ram baseline as 19.20 MB.
-
+![v0.1.0 Verification](<pylitestream==0.1.0 proof 1.jpg>)
+![v0.1.0 Verification](<pylitestream==0.1.0 proof 2.jpg>)
+ 
 Storage I/O (StreamCSV): Successfully executed two comprehensive benchmarks on local device storage, parsing synthetic datasets and enterprise CSVs with zero line-fragmentation errors. Memory peaked and stablised at 22.20 MB while initial ram baseline as 19.39 MB.
 
-Network I/O (StreamAPI): Validated via a continuous polling loop against the USGS Live Earthquake GeoJSON feed, maintaining a stable 0.25 MB memory footprint across connection cycles.Memory peaked and stablised at 22.29 MB while initial ram baseline as 19.92 MB.
+![StreamCSV Verification](<pylitestream streamCSV proof 1.jpg>)
+![StreamCSV Verification](<pylitestream streamCSV proof 2.jpg>)
+![StreamCSV Verification](<pylitestream streamCSV proof 3.jpg>)
 
+Network I/O (StreamAPI): Validated via a continuous polling loop against the USGS Live Earthquake GeoJSON feed, maintaining a stable 0.25 MB memory footprint across connection cycles.Memory peaked and stablised at 22.29 MB while initial ram baseline as 19.92 MB.
+**(Infinite Live Data Verification):**
+![StreamAPI Verification](<pylitestream streamAPI proof 1.jpg>)
+![StreamAPI Verification](<pylitestream streamAPI proof 2.jpg>)
  
