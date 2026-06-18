@@ -84,7 +84,7 @@ pip install pylitestream opencv-python-headless
 
 3. Install Latest Development Build
 To pull the absolute latest, bleeding-edge commits directly from this source repository:
-pip install git+https://github.com/shekhnooro552-hue/pylitestream.git
+pip install git+https://github.com/shekhnoori552-hue/pylitestream.git
 
 EMPIRICAL VALIDATION
 pylitestream is rigorously benchmarked on sandboxed ARM architecture. Telemetry was tracked using the resource.getrusage Linux module to definitively prove space complexity.
